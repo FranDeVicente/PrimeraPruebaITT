@@ -1,0 +1,142 @@
+package com.itt.fiestas;
+import java.time.LocalDate; //importo LocalTime como enseñaste en clase.
+// N. --> indicará el Nº de enunciado requerido en el ejercicio.
+public class Fiesta { //N.1 Creamos la nueva clase Fiesta.
+	//N.2 todas las propiedades serán privadas y accesibles a los métodos get/set.
+	private String tipoFiesta; //Tipo fiesta: infantil, cumpleaños, disfraces, etc.
+	private LocalDate fechaHora; //Aplico el dato LocalTime que enseñaste en clase.
+	private String direccion; //La dirección donde se realizará la fiesta.
+	private int bebidas; //El precio por bebida será de 2€ la unidad.
+	private int bocadillos; // El precio del bocadillo será de 3€ la unidad.
+	private int invitados; // número de invitados a la fiesta. 5€ por invitado.
+	private double precioFiesta; //Se dará el coste total de la fiesta.
+        private static int contadorFiestas; //Version 2 Creo atributo estático contador fiestas.
+	//N.6 creamos el segundo método constructor con todos los atributos.
+	public Fiesta(int contadorFiestas, String tipoFiesta, LocalDate fechaHora, String direccion, 
+			int bebidas, int bocadillos, int invitados, double precioFiesta) {
+		contadorFiestas++; //añado atributo en el constructor de la version 2.
+                this.tipoFiesta = tipoFiesta;
+		this.fechaHora = fechaHora;
+		this.direccion = direccion;
+		this.bebidas = bebidas;
+		this.bocadillos = bocadillos;
+		this.invitados = invitados;
+		this.precioFiesta = precioFiesta;
+	}
+        //N.7 Creamos el primer método constructor vacío.
+	public Fiesta() {
+                contadorFiestas++; //añado atributo en de la 2º version al constructor.
+		this.tipoFiesta = "";
+		this.fechaHora = LocalDate.now();
+		this.direccion = "";
+		this.bebidas = 0;
+		this.bocadillos = 0;
+		this.invitados = 0;
+		this.precioFiesta = 0;
+	}
+        //Version 2.-Creo los métodos Sett/Gett del nuevo atributo contador fiestas.
+        public void setContadorFiestas(int contadorDeFiestas){
+            contadorFiestas = contadorDeFiestas;
+        }
+        public String getContadorFiestas(){
+            contadorFiestas = contadorFiestas++;
+            return "Has creado " + contadorFiestas + " objeto/s fiesta";
+        }
+        //Creamos el método Setter para indicar la dirección.
+	public void setDimeDireccion (String fijaDireccion){
+		direccion = fijaDireccion;
+	}
+	//N.3 cramos el método Getter de consulta.
+	public String getDireccion () {
+		return "La fiesta se celebrará en " + direccion;
+	}
+	//N.3 creamos el método Setter para indicar el tipo de fiesta.
+	public void setDimeTipoFiesta (String claseDeFiesta){
+		tipoFiesta = claseDeFiesta;
+	}
+	//N.3 cramos el método Getter de consulta.
+	public String getTipoFiesta () {
+		return "La fiesta será temática " + tipoFiesta + ".";
+	}
+	//N.4 creamos método Setter para saber los bocadillos que habrá.
+	public void setCuantosBocadillos (int cantidadBocadillos){
+		bocadillos = cantidadBocadillos;
+        }
+        //N.4 cramos el método Getter de consulta de bocadillos.
+	public String getBocadillos () {
+		return "Encargaremos " + bocadillos + " bocadillos para la fiesta.";
+	}
+         //N.4 creamos método Setter para saber las bebidas que habrá.
+	public void setCuantosBebidas (int cantidadBebidas){
+		bebidas = cantidadBebidas;
+        }
+        //N.4 cramos el método Getter de consulta de bebidas.
+	public String getBebidas () {
+		return "Habrá " + bebidas + " bebidas para todos los invitados.";
+	}
+        //N.5 indicaremos un método Setter/Getter de consulta para la fecha de la fiesta.
+        public void setFecha_Hora(LocalDate fechaYhora){
+            fechaHora = fechaYhora;
+        }
+        public LocalDate getHora(){
+        return fechaHora;
+        }
+        //N.8 El método consultar() retornará una cadena con todos los datos de la fiesta.
+        public String getConsulta(){
+            return "La temática de la fiesta será de tipo " + tipoFiesta + 
+                    ". Se celebrará el próximo " + fechaHora + " en la dirección: "+ 
+                    direccion + ". Contaremos con " + bebidas + " bebidas para los invitados" +
+                    " y con " + bocadillos + " bocadillos para todos ellos." +
+                    " Habrá un total de " + invitados + " invitados. Y el coste de la fiesta será de "+
+                    precioFiesta + "€ en total.";
+        }        
+        //N.9 El  método invitar invitados.
+        public void setAgregaInvitado (int sumaInvitado){
+		this.invitados = invitados+1;
+        }
+       	//N.10 método cancelar invitación.
+        public void setCancelarInvitado (int restaInvitado){
+		this.invitados = invitados-1;
+        }
+       	public int getInvitados(){
+            return invitados;
+        }
+        //N.11 El coste total de la fiesta 
+        public String getPrecioFiesta(){
+            precioFiesta = (invitados*5)+(bebidas*2)+(bocadillos*3);
+            return "La fiesta, tendrá un coste total de "+ precioFiesta + "€";
+        }
+       
+}
+   public static void main(String[] args) {
+        //Instancio la clase lo primero.
+        Fiesta miFiesta = new Fiesta();
+        //indicamos qué tipo de fiesta queremos: infantil, cumpleaños, disfraces, etc.
+        miFiesta.setDimeTipoFiesta("Infantil");
+        System.out.println(miFiesta.getTipoFiesta());
+        //indicamos cuántos bocadillos encargamos para la fiesta.
+        miFiesta.setCuantosBocadillos(15);
+        System.out.println(miFiesta.getBocadillos());
+        //indicamos cuántas bebidas encargamos para la fiesta.
+        miFiesta.setCuantosBebidas(30);
+        System.out.println(miFiesta.getBebidas());
+        //Indicaremos la fecha y hora de la fiesta.
+        System.out.println("La fiesta será el próximo "+miFiesta.getHora()+" (aa/mm/dd)");
+        miFiesta.setDimeDireccion("C/Altamirano, local 12. Madrid");
+        //Indicaremos el resumen de la fiesta.
+        System.out.println("------------Resumen de tu fiesta---------------------------");
+        System.out.println(miFiesta.getConsulta());
+        System.out.println("-----------------------------------------------------------");
+        //Añadiremos los invitados que queramos.
+        miFiesta.setAgregaInvitado(12);
+        //Cancelaremos los invitados que queramos
+        miFiesta.setCancelarInvitado(3);
+        //Sacaremos el total de invitados quitando las cancelaciones.
+        System.out.println("Habrá un total de "+miFiesta.getInvitados()+" invitado/s a la fiesta");
+        System.out.println(miFiesta.getPrecioFiesta());
+        System.out.println(miFiesta.getContadorFiestas());//Versión 2 contador Fiestas.
+             
+        
+    }
+    
+}
