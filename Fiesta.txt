@@ -1,5 +1,6 @@
 package com.itt.fiestas;
 import java.time.LocalDate; //importo LocalTime como enseñaste en clase.
+//REALIZO CAMBIOS PARA EJERCICIO ED UF4 ACTIVIDAD 6.
 // N. --> indicará el Nº de enunciado requerido en el ejercicio.
 public class Fiesta { //N.1 Creamos la nueva clase Fiesta.
 	//N.2 todas las propiedades serán privadas y accesibles a los métodos get/set.
@@ -24,6 +25,7 @@ public class Fiesta { //N.1 Creamos la nueva clase Fiesta.
 		this.precioFiesta = precioFiesta;
 	}
         //N.7 Creamos el primer método constructor vacío.
+		//cambios de prueba modificacion ED
 	public Fiesta() {
                 contadorFiestas++; //añado atributo en de la 2º version al constructor.
 		this.tipoFiesta = "";
